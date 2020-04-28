@@ -1,7 +1,7 @@
 public static class QuoteCrazyTalkPhrases
 {
 	public static string[] phrases = {
-"⠙",//0
+"4 In Semaphore",//0
 "1",//1
 "2",//2
 "3",//3
@@ -11,7 +11,7 @@ public static class QuoteCrazyTalkPhrases
 "Three",//7
 "Four",//8
 "Won",//9
-"Two",//0
+"Too",//0
 "Tree",//1
 "For",//2
 "1ne",//3
@@ -37,9 +37,9 @@ public static class QuoteCrazyTalkPhrases
 "Southwest by\nSouth",//3
 "West by South",//4
 "Northwest by\nSouth",//5
-"South by North",//6
-"⠁",//7
-"⠃",//8
-"⠉"//9
+"North by South",//6
+"1 In Semaphore",//7
+"2 In Semaphore",//8
+"3 In Semaphore"//9
 };
 }

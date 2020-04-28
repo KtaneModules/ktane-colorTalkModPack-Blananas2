@@ -14,7 +14,10 @@ MonoBehaviour:
   id: ColorTalks
   title: Color Talk Mod Pack
   author: Me
-  description: The true color talk
+  description: 'The true color talk
+
+
+    Manuals can be found at ktane.timwi.de'
   version: 69.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: f2b136b4a13b64844becfef8f732dab1, type: 3}

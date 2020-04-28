@@ -52,7 +52,7 @@ public class ArrowTalk : MonoBehaviour {
       while(FUCKbutasastring.Length < 8){
         FUCKbutasastring = "0" + FUCKbutasastring;
       }
-      Debug.LogFormat("[Arrow Talk #{0}] The starting rotations with 1 being turned and 0 being correct is {1} (in the order given in the manual).", moduleId, FUCKbutasastring);
+      Debug.LogFormat("[Arrow Talk #{0}] The starting rotations with 1 being turned and 0 being correct is {1} (in the order given in the manual).", moduleId, FUCKbutasastring.Replace("\n"," "));
       for (int i = 0; i < 8; i++) {
         if (FUCKbutasastring[i] == '1') {
           fats[i].transform.Rotate(0f,180f,0f);
@@ -157,7 +157,7 @@ public class ArrowTalk : MonoBehaviour {
     else{
       yield return null;
     }
-    Debug.LogFormat("[Arrow Talk #{0}] The screen says \"{1}\".", moduleId, Candela.text);
+    Debug.LogFormat("[Arrow Talk #{0}] The screen says \"{1}\".", moduleId, Candela.text.Replace("\n"," "));
     yield return null;
   }
   IEnumerator GuysBlanHasBecomeFerralHelp(){
@@ -213,7 +213,7 @@ public class ArrowTalk : MonoBehaviour {
     else {
       yield return null;
     }
-    Debug.LogFormat("[Arrow Talk #{0}] The screen says \"{1}\".", moduleId, Candela.text);
+    Debug.LogFormat("[Arrow Talk #{0}] The screen says \"{1}\".", moduleId, Candela.text.Replace("\n"," "));
     yield return null;
   }
   IEnumerator Imeanwhyevenbother(){

@@ -12,7 +12,6 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     public KMSelectable button;
     public TextMesh jdakgflanfadkgnalk;
     public TextMesh FUCK;
-    //Logging
     static int moduleIdCounter = 1;
     int moduleId;
     private bool moduleSolved;
@@ -31,23 +30,45 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
         button.OnInteract += delegate () { PressButton(); return false; };
     }
 
-    // Use this for initialization
     void Start () {
       dumbshit = UnityEngine.Random.Range(1000,10000);
-      retard1 = (UnityEngine.Random.Range(0,4)*10) + ((dumbshit % 10000 - dumbshit % 1000) / 1000);
-      retard21 = (UnityEngine.Random.Range(0,4)*10) + ((dumbshit % 1000 - dumbshit % 100) / 100);
-      retard3 = (UnityEngine.Random.Range(0,4)*10) + ((dumbshit % 100 - dumbshit % 10) / 10);
-      retard4 = (UnityEngine.Random.Range(0,4)*10) + (dumbshit % 10);
-      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The first phrase is {1}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard1]);
-      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The second phrase is {1}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard21]);
-      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The third phrase is {1}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard3]);
-      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The fourth phrase is {1}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard4]);
+      retard1 = (UnityEngine.Random.Range(0,4)*10);
+      if (retard1 == 40) {
+        return;
+      }
+      else {
+        retard1 += UnityEngine.Random.Range(0,10);
+      }
+      retard21 = (UnityEngine.Random.Range(0,4)*10);
+      if (retard21 == 40) {
+        return;
+      }
+      else {
+        retard21 += UnityEngine.Random.Range(0,10);
+      }
+      retard3 = (UnityEngine.Random.Range(0,4)*10);
+      if (retard3 == 40) {
+        return;
+      }
+      else {
+        retard3 += UnityEngine.Random.Range(0,10);
+      }
+      retard4 = (UnityEngine.Random.Range(0,4)*10);
+      if (retard4 == 40) {
+        return;
+      }
+      else {
+        retard4 += UnityEngine.Random.Range(0,10);
+      }
+      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The first phrase is {1}. Which has a value of {2}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard1],retard1);
+      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The second phrase is {1}. Which has a value of {2}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard21],retard21);
+      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The third phrase is {1}. Which has a value of {2}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard3],retard3);
+      Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The fourth phrase is {1}. Which has a value of {2}.", moduleId,QuoteCrazyTalkPhrases.phrases[retard4],retard4);
       Debug.LogFormat("[Quote Crazy Talk End Quote #{0}] The goal number is {1}.", moduleId,dumbshit);
       StartCoroutine(uhhh());
       StartCoroutine(SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS());
 	}
 
-	// Update is called once per frame
 	void PressButton () {
     button.AddInteractionPunch();
     GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
