@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 
@@ -157,4 +158,99 @@ public class KMazeyTalk : MonoBehaviour {
       GetComponent<KMBombModule>().HandleStrike();
     }
   }
+  //Twitch Plays
+  #pragma warning disable 414
+  private readonly string TwitchHelpMessage = @"Use !{0} move UDRL to move around the maze. Use !{0} circle to press the circle.";
+  #pragma warning restore 414
+  IEnumerator ProcessTwitchCommand(string ohgodno){
+    ohgodno = ohgodno.ToUpperInvariant().Trim();
+    Match meth = Regex.Match(ohgodno, @"(?:MOVE ([UDRL]+))|CIRCLE");
+    if (meth.Groups[1].Success){
+      char[] crabcrab = meth.Groups[1].Value.ToCharArray();
+      Dictionary<char, int> help = new Dictionary<char, int>() {
+        { 'R', 0 },
+        { 'L', 1 },
+        { 'U', 2 },
+        { 'D', 3 }
+      };
+      yield return null;
+      for (int i = 0; i < crabcrab.Length; i++){
+        Buttons[help[crabcrab[i]]].OnInteract();
+        yield return new WaitForSeconds(.1f);
+      }
+    }
+    else if (meth.Success)
+    {
+      yield return null;
+      Submit.OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+    else
+      yield return "sendtochaterror Valid commands are move and circle. Use !{1} help to see the full commands.";
+    yield break;
+  }
+  //Iterative Breadth First Search
+  struct Graph
+    {
+        public int Position { get { return _position; } }
+        public int PreviousLocation { get { return _previousLocation; } }
+        public string Direction { get { return _direction; } }
+        public Graph(int position, int previousLocation, string direction)
+        {
+            _position = position;
+            _previousLocation = previousLocation;
+            _direction = direction;
+        }
+        private int _position;
+        private int _previousLocation;
+        private string _direction;
+    }
+    string BFS()
+    {
+        //Youisdumb Is the initial location
+        Queue<int> ihatewaiting = new Queue<int>();
+        HashSet<Graph> lickingBalls = new HashSet<Graph>();
+        ihatewaiting.Enqueue(Youisdumb);
+        lickingBalls.Add(new Graph(Youisdumb, -1, ""));
+        int[] oofSet = new int[4] { 1, -1, -15, 15 };
+        string[] oofDir = new string[4] { "R", "L", "U", "D" };
+        //+1 right - 1 left - 15 up + 15 down
+        while (ihatewaiting.Count != 0)
+        {
+            var pee = ihatewaiting.Dequeue();
+            if (pee == Wavecheck)
+            {
+                string asser = "";
+                Graph pee2pee = new Graph();
+                do
+                {
+                    pee2pee = lickingBalls.Where(graph => graph.Position == pee).ElementAt(0);
+                    asser = pee2pee.Direction + asser;
+                    pee = pee2pee.PreviousLocation;
+                }
+                while (pee != -1);
+                return asser;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                // -1 -15 +15 +1 -> // -2 -30 +30 +2
+                if (!(Maze[pee + oofSet[i]] == 'O') || lickingBalls.Any(graph => graph.Position == (pee + 2 * oofSet[i])))
+                    continue;
+                lickingBalls.Add(new Graph(pee + 2 * oofSet[i], pee, oofDir[i]));
+                ihatewaiting.Enqueue(pee + 2 * oofSet[i]);
+            }
+        }
+        return "69";
+    }
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        if (!Vibin)
+            yield return ProcessTwitchCommand("circle");
+        yield return new WaitForSeconds(.1f);
+        string fourtwenty = BFS();
+        if (fourtwenty == "69") yield break;
+        if (fourtwenty != "")
+            yield return ProcessTwitchCommand("move " + fourtwenty);
+        yield return ProcessTwitchCommand("circle");
+    }
 }

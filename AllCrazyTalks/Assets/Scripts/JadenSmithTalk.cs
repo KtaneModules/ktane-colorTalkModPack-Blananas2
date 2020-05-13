@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 
@@ -85,5 +86,28 @@ public class JadenSmithTalk : MonoBehaviour {
         markiplierspiss.text = temp;
     }
     yield return null;
+  }
+  //Twitch Plays
+  #pragma warning disable 414
+  private readonly string TwitchHelpMessage = @"Use !{0} y/VoteYea/yes/yay/n/VoteNay/no/nay/left/right to press yes or no button.";
+  #pragma warning restore 414
+  IEnumerator ProcessTwitchCommand(string flaccidcock){
+    if (Regex.IsMatch(flaccidcock, @"y(?:es|ay)?|VoteYea|left?", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
+      yield return null;
+      Buttons[0].OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+    else if (Regex.IsMatch(flaccidcock, @"n(?:o|ay)?|VoteNay|right?", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
+      yield return null;
+      Buttons[1].OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+    else
+      yield return "sendtochaterror Valid commands can be found by using !{1} help.";
+    yield break;
+  }
+  IEnumerator TwitchHandleForcedSolve(){
+    Buttons[stiffcocks].OnInteract();
+    yield return new WaitForSeconds(.1f);
   }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 
@@ -112,5 +113,38 @@ public class CrazyTalkWithAK : MonoBehaviour {
       GetComponent<KMBombModule>().HandleStrike();
       Debug.LogFormat("[Crazy Talk With A K #{0}] You submitted {1}. Strike, although I don't care enough about this mod so you don't get a condescending message.", moduleId, (SillySluts * 10) + Topdisplay);
     }
+  }
+  //Twitch Plays
+  #pragma warning disable 414
+  private readonly string TwitchHelpMessage = @"Use !{0} submit 69 to submit 69 as the answer.";
+  #pragma warning restore 414
+  IEnumerator ProcessTwitchCommand (string cocaine){
+    cocaine = cocaine.ToLowerInvariant();
+    Match m = Regex.Match(cocaine, @"submit (\d{2})");
+    if (m.Success){
+      char[] viagra = m.Groups[1].Value.ToCharArray();
+      yield return null;
+      while (SillySluts != (viagra[0] - '0')){
+        yield return "trycancel";
+        WeedChungi[0].OnInteract();
+        yield return new WaitForSeconds(.1f);
+      }
+      while (Topdisplay != (viagra[1] - '0')){
+        yield return "trycancel";
+        WeedChungi[2].OnInteract();
+        yield return new WaitForSeconds(.1f);
+      }
+      Hacheejay.OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+    else
+      yield return "sendtochaterror Valid command is submit. Use !{1} help to see the full command.";
+    yield break;
+  }
+  IEnumerator TwitchHandleForcedSolve() {
+    var youdontfucingknoweither = Idontfuckingknow.ToString();
+      while (youdontfucingknoweither.Length < 2)
+        youdontfucingknoweither = "0" + youdontfucingknoweither;
+    yield return ProcessTwitchCommand("submit " + youdontfucingknoweither);
   }
 }

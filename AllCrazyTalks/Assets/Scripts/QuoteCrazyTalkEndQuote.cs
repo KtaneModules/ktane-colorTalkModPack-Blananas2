@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 
@@ -140,5 +141,46 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     FUCK.text = " ";
     yield return new WaitForSeconds(0.25f);
     StartCoroutine(SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS());
+  } 
+  //Twitch Plays
+  #pragma warning disable 414
+  private readonly string TwitchHelpMessage = @"Use !{0} submit 6969 to submit 6969. Use !{0} reset to reset the input.";
+  #pragma warning restore 414
+  IEnumerator ProcessTwitchCommand(string yeet){
+    yeet = yeet.ToLowerInvariant().Trim();
+    Match m = Regex.Match(yeet, @"submit (\d{1,4})|reset");
+    if (m.Groups[1].Success){
+      yeet = m.Groups[1].Value.Substring(0, m.Groups[1].Value.Length - dipass);
+      if (yeet.Length == 0)
+        yield break;
+      yield return null;
+      for(int i = 0; i < yeet.Length; i++){
+        while (yeet.Substring(i, 1) != FUCK.text){
+          yield return "trycancel";
+          yield return null;
+        }
+      button.OnInteract();
+      }
+    }
+    else if (m.Success){
+      yield return null;
+      uhhhh = 0;
+      dipass = 0;
+    }
+    else{
+      yield return "sendtochaterror Valid commands are reset and submit. Use !{1} help to see all commands.";
+    }
+     yield break;
   }
+    IEnumerator TwitchHandleForcedSolve(){
+      yield return ProcessTwitchCommand("reset");
+      var weiner = dumbshit.ToString();
+        while (weiner.Length < 4)
+          weiner = "0" + weiner;
+        for (int i = 0; i < 4; i++){
+          while (weiner.Substring(i, 1) != FUCK.text)
+            yield return true;
+          button.OnInteract();
+        }
+    }
 }

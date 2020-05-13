@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 public class StandardCrazyTalk : MonoBehaviour {
@@ -241,5 +242,48 @@ public class StandardCrazyTalk : MonoBehaviour {
         MainText.text = "";
         Surf.GetComponent<MeshRenderer>().material = Weed[0];
       }
+    }
+    //Twitch Plays
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"Use !{0} cycle to cycle all the top buttons. Use !{0} highlight 1-5 to highligt specific button along the top. Use !{0} press (tl|tr|bl|br|sl) to press in 4 corners and a status light.";
+    #pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string yeet){
+        yeet = yeet.ToLowerInvariant().Trim();
+        Match m = Regex.Match(yeet, @"(?:press ([tb][lr]|sl))|cycle|highlight ([1-5])");
+        if (m.Success){
+            yield return null;
+            if (m.Groups[1].Success){
+                Dictionary<string, int> yeetToButtonPress = new Dictionary<string, int>(){
+                    { "sl", 0 },
+                    { "tl", 1 },
+                    { "tr", 2 },
+                    { "bl", 3 },
+                    { "br", 4 }
+                };
+                OtherButtons[yeetToButtonPress[m.Groups[1].Value]].OnInteract();
+            }
+            else if (m.Groups[2].Success){
+                int index;
+                int.TryParse(m.Groups[2].Value, out index);
+                TopButtons[index - 1].OnHighlight();
+                yield return new WaitForSeconds(.1f);
+            }
+            else{
+                for (int i = 0; i < 5; i++){
+                    TopButtons[i].OnHighlight();
+                    yield return new WaitForSeconds(3f);
+                }
+            }
+        }
+        else
+            yield return "sendtochaterror Valid commands are highlight, cycle, and press. Use !{1} help to find the full commands.";
+        yield break;
+    }
+    IEnumerator TwitchHandleForcedSolve(){
+        if (verdict)
+            OtherButtons[firstPosition].OnInteract();
+        else
+            OtherButtons[secondPosition].OnInteract();
+        yield return new WaitForSeconds(.1f);
     }
 }
