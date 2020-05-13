@@ -422,6 +422,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 public class KiloTalk : MonoBehaviour {
@@ -691,20 +692,350 @@ public class KiloTalk : MonoBehaviour {
       }
     }
 	}
-  void PressSubmit (){
-    if ((fuck * 100) + (shit * 10) + cunt == anotherfuckingvariable % 1000) {
-      Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Module disarmed.", moduleId, Idontfuckingknow);
-      GetComponent<KMBombModule>().HandlePass();
-      Audio.PlaySoundAtTransform("Kachow", transform);
-      Fatasses[0].text = "4";
-      Fatasses[1].text = "2";
-      Fatasses[2].text = "0";
-      Fatass.text = "Kilo Talk";
-      //return null;
+    void PressSubmit()
+    {
+        if ((fuck * 100) + (shit * 10) + cunt == anotherfuckingvariable % 1000)
+        {
+            Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Module disarmed.", moduleId, Idontfuckingknow);
+            GetComponent<KMBombModule>().HandlePass();
+            Audio.PlaySoundAtTransform("Kachow", transform);
+            Fatasses[0].text = "4";
+            Fatasses[1].text = "2";
+            Fatasses[2].text = "0";
+            Fatass.text = "Kilo Talk";
+            //return null;
+        }
+        else
+        {
+            Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Strike, weed eater.", moduleId, (fuck * 100) + (shit * 10) + cunt);
+            GetComponent<KMBombModule>().HandleStrike();
+        }
     }
-    else {
-      Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Strike, weed eater.", moduleId, (fuck * 100) + (shit * 10) + cunt);
-      GetComponent<KMBombModule>().HandleStrike();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Twitch Plays
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"Use !{0} submit 420 to submit 420 as the answer.";
+    #pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string fuckme) {
+        fuckme = fuckme.ToLowerInvariant().Trim();
+        Match m = Regex.Match(fuckme, @"submit (\d{3})");
+        if (m.Success)
+        {
+            char[] crap = m.Groups[1].Value.ToCharArray();
+            //((fuck * 100) + (shit * 10) + cunt == anotherfuckingvariable % 1000)
+            yield return null;
+            while (fuck != (crap[0] - '0')){
+                yield return "trycancel";
+                Displays[0].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+            while (shit != (crap[1] - '0')){
+                yield return "trycancel";
+                Displays[1].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+            while (cunt != (crap[2] - '0')){
+                yield return "trycancel";
+                Displays[2].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+            Submit.OnInteract();
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+            yield return "sendtochaterror Valid command is submit. Use !{1} help to see full command.";
+        yield break;
     }
-  }
+    IEnumerator TwitchHandleForcedSolve(){
+        var crab = (anotherfuckingvariable % 1000).ToString();
+        while (crab.Length < 3)
+            crab = "0" + crab;
+        yield return ProcessTwitchCommand("submit " + crab);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Linq;
 using UnityEngine;
 using KModkit;
@@ -220,5 +221,28 @@ public class ArrowTalk : MonoBehaviour {
     Debug.LogFormat("[Arrow Talk #{0}] All the arrows point inwards. Module disarmed.", moduleId);
     Candela.text = "Arrow\nTalk";
     yield return null;
+  }
+  //Twitch Plays
+  #pragma warning disable 414
+  private readonly string TwitchHelpMessage = @"Use !{0} press 1-8 to press an arrow where 1 is the arrow in north north west and going clockwise.";
+  #pragma warning restore 414
+  IEnumerator ProcessTwitchCommand(string thisisblansfault){
+    Match m = Regex.Match(thisisblansfault, @"press ([1-8])", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    if (m.Success){
+      int rklsgdgrsmgioiojpwaerargkirekmlerkmlefawepof = int.Parse(m.Groups[1].Value) - 1;
+      int[] shutupson_blan2020 = new int[1 + 4 + 3] { 2, 3, 6, 7, 1, 0, 5, 4};
+      yield return null;
+      fats[shutupson_blan2020[rklsgdgrsmgioiojpwaerargkirekmlerkmlefawepof]].OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+    else 
+      yield return "sendtochaterror Valid command is press. Use !{1} help to see the full command";
+    yield break;
+  }
+  IEnumerator TwitchHandleForcedSolve(){
+    while (!moduleSolved){
+      fats[shitsucker].OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
   }
 }
