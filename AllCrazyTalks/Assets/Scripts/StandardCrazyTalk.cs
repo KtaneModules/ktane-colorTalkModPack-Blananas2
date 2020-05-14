@@ -92,7 +92,6 @@ public class StandardCrazyTalk : MonoBehaviour {
             }
         }
         Debug.LogFormat("[Standard Crazy Talk #{0}] The split phrases are: \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\"", moduleId, splitMessage[0].Replace("\n", "#").Replace(" ", "#"), splitMessage[1].Replace("\n", "#").Replace(" ", "#"), splitMessage[2].Replace("\n", "#").Replace(" ", "#"), splitMessage[3].Replace("\n", "#").Replace(" ", "#"), splitMessage[4].Replace("\n", "#").Replace(" ", "#"));
-
         Debug.Log(String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8}", colorNames[firstColor].ToLower(), firstPosition.ToString(), colorNames[secondColor].ToLower(), secondPosition.ToString(), distance.ToString(), ordinals[firstPosition], ordinals[secondPosition], placeNames[firstPosition],placeNames[secondPosition]));
         Debug.Log(String.Format("C1 AT {0} | C2 AT {1}", colorOrder.IndexOf(colorNames[firstColor]), colorOrder.IndexOf(colorNames[secondColor])));
 
