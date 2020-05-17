@@ -6972,7 +6972,7 @@ public class KiloTalk : MonoBehaviour {
     #pragma warning restore 414
     IEnumerator ProcessTwitchCommand(string fuckme) {
         fuckme = fuckme.ToLowerInvariant().Trim();
-        Match m = Regex.Match(fuckme, @"submit (\d{3})");
+        Match m = Regex.Match(fuckme, @"^submit (\d{3})$");
         if (m.Success)
         {
             char[] crap = m.Groups[1].Value.ToCharArray();

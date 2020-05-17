@@ -164,7 +164,7 @@ public class KMazeyTalk : MonoBehaviour {
   #pragma warning restore 414
   IEnumerator ProcessTwitchCommand(string ohgodno){
     ohgodno = ohgodno.ToUpperInvariant().Trim();
-    Match meth = Regex.Match(ohgodno, @"(?:MOVE ([UDRL]+))|CIRCLE");
+    Match meth = Regex.Match(ohgodno, @"^(?:MOVE ([UDRL]+)|CIRCLE)$");
     if (meth.Groups[1].Success){
       char[] crabcrab = meth.Groups[1].Value.ToCharArray();
       Dictionary<char, int> help = new Dictionary<char, int>() {

@@ -92,12 +92,13 @@ public class JadenSmithTalk : MonoBehaviour {
   private readonly string TwitchHelpMessage = @"Use !{0} y/VoteYea/yes/yay/n/VoteNay/no/nay/left/right to press yes or no button.";
   #pragma warning restore 414
   IEnumerator ProcessTwitchCommand(string flaccidcock){
-    if (Regex.IsMatch(flaccidcock, @"y(?:es|ay)?|VoteYea|left?", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
+	flaccidcock = flaccidcock.Trim();
+    if (Regex.IsMatch(flaccidcock, @"^(?:y(?:es|ay)?|VoteYea|left?)$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
       yield return null;
       Buttons[0].OnInteract();
       yield return new WaitForSeconds(.1f);
     }
-    else if (Regex.IsMatch(flaccidcock, @"n(?:o|ay)?|VoteNay|right?", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
+    else if (Regex.IsMatch(flaccidcock, @"^(?:n(?:o|ay)?|VoteNay|right?)$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)){
       yield return null;
       Buttons[1].OnInteract();
       yield return new WaitForSeconds(.1f);

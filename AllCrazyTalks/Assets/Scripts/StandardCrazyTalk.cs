@@ -153,8 +153,8 @@ public class StandardCrazyTalk : MonoBehaviour {
           break;
         }
         Debug.Log(verdict);
-	}
-	void tButtonPress(KMSelectable tButton) {
+    }
+    void tButtonPress(KMSelectable tButton) {
         for (int i = 0; i < 5; i++) {
             if (tButton == TopButtons[i]) {
                 MainText.text = splitMessage[i];
@@ -244,11 +244,38 @@ public class StandardCrazyTalk : MonoBehaviour {
     }
     //Twitch Plays
     #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"Use !{0} cycle to cycle all the top buttons. Use !{0} highlight 1-5 to highligt specific button along the top. Use !{0} press (tl|tr|bl|br|sl) to press in 4 corners and a status light.";
+    private readonly string TwitchHelpMessage = @"Use !{0} cycle 5 to cycle all the top buttons 5 times (default to 1 cycle if digit is not specified and no more 3 digits can be used). Use !{0} highlight 15 2 to highlight button 1, 5, and 2 along the top. Use !{0} press (tl|tr|bl|br|sl) to press in 4 corners and a status light. Use !{0} setspeed 0.05 to set cycle/highlight speed to 0.05 seconds (can not be longer that 19.99 seconds).";
     #pragma warning restore 414
+    private Coroutine vodka = null;
+    bool TwitchShouldCancelCommand;
+    int cycleCount = 5;
+    IEnumerator tButtonCycle(int num){
+        for (int i = 0; i < 5 * num; i++){
+            TopButtons[i % 5].OnHighlight();
+            for (int j = 0; j < cycleCount; j++){
+                yield return new WaitForSeconds(0.01f);
+                if (TwitchShouldCancelCommand)
+                    goto done1;
+            }
+        }
+        done1:
+        vodka = null;
+    }
+    IEnumerator tButtonHighlight(string nun){
+        for (int i = 0; i < nun.Length; i++){
+            TopButtons[nun[i] - '1'].OnHighlight();
+            for (int j = 0; j < cycleCount; j++){
+                yield return new WaitForSeconds(0.01f);
+                if (TwitchShouldCancelCommand)
+                    goto done2;
+            }
+        }
+        done2:
+        vodka = null;
+    }
     IEnumerator ProcessTwitchCommand(string yeet){
         yeet = yeet.ToLowerInvariant().Trim();
-        Match m = Regex.Match(yeet, @"(?:press ([tb][lr]|sl))|cycle|highlight ([1-5])");
+        Match m = Regex.Match(yeet, @"^(?:press ([tb][lr]|sl)|cycle( [1-9]\d{0,2})?|highlight ((?:[1-5]\s*)+)|setspeed (1?\d(?:.\d{1,2})?)?)$");
         if (m.Success){
             yield return null;
             if (m.Groups[1].Success){
@@ -261,17 +288,26 @@ public class StandardCrazyTalk : MonoBehaviour {
                 };
                 OtherButtons[yeetToButtonPress[m.Groups[1].Value]].OnInteract();
             }
-            else if (m.Groups[2].Success){
-                int index;
-                int.TryParse(m.Groups[2].Value, out index);
-                TopButtons[index - 1].OnHighlight();
-                yield return new WaitForSeconds(.1f);
+            else if (m.Groups[3].Success){
+                yeet = m.Groups[3].Value.Replace(" ", String.Empty);
+                vodka = StartCoroutine(tButtonHighlight(yeet));
+                while (vodka != null)
+                    yield return "trycancel";
             }
-            else{
-                for (int i = 0; i < 5; i++){
-                    TopButtons[i].OnHighlight();
-                    yield return new WaitForSeconds(3f);
+            else if (m.Groups[4].Success){
+                cycleCount = (int) (Mathf.Max(float.Parse(m.Groups[4].Value), 0.05f) / 0.01f);
+            }
+            else {
+                int num = 1;
+                if (m.Groups[2].Success)
+                    num = int.Parse(m.Groups[2].Value);
+                if (num == 0){
+                    yield return "sendtochaterror You can't cycle fast 0 times.";
+                    yield break;
                 }
+                vodka = StartCoroutine(tButtonCycle(num));
+                while (vodka != null)
+                    yield return "trycancel";
             }
         }
         else
@@ -279,6 +315,9 @@ public class StandardCrazyTalk : MonoBehaviour {
         yield break;
     }
     IEnumerator TwitchHandleForcedSolve(){
+        if(vodka != null)
+            StopCoroutine(vodka);
+        vodka = null;
         if (verdict)
             OtherButtons[firstPosition].OnInteract();
         else
