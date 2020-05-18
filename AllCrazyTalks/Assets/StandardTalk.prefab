@@ -329,7 +329,6 @@ GameObject:
   - component: {fileID: 114277301596578110}
   - component: {fileID: 114328020385232164}
   - component: {fileID: 114763741548843854}
-  - component: {fileID: 114843275161633396}
   - component: {fileID: 114710755031123750}
   m_Layer: 0
   m_Name: StandardTalk
@@ -456,7 +455,7 @@ GameObject:
   - component: {fileID: 33298999969763180}
   - component: {fileID: 114842238078460400}
   m_Layer: 0
-  m_Name: Component_Highlight
+  m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,17 +2351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
---- !u!114 &114843275161633396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344976751143278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114918044621509582
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -65,6 +65,13 @@ public class JadenSmithTalk : MonoBehaviour {
         }
         temp = newPhrase;
         markiplierspiss.text = temp;
+        Debug.LogFormat("[Mental Math #{0}] The phrase says {1}.", moduleId, temp);
+        if (stiffcocks == 0) {
+          Debug.LogFormat("[Mental Math #{0}] This was said by the Jade.", moduleId, temp);
+        }
+        else {
+          Debug.LogFormat("[Mental Math #{0}] This was not said by the Jade.", moduleId, temp);
+        }
     }
     else {
       temp = NoJaden.Phrases[UnityEngine.Random.Range(0,NoJaden.Phrases.Count())];
