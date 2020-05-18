@@ -227,7 +227,8 @@ public class ArrowTalk : MonoBehaviour {
   private readonly string TwitchHelpMessage = @"Use !{0} press 1-8 to press an arrow where 1 is the arrow in north north west and going clockwise.";
   #pragma warning restore 414
   IEnumerator ProcessTwitchCommand(string thisisblansfault){
-    Match m = Regex.Match(thisisblansfault, @"press ([1-8])", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+	thisisblansfault = thisisblansfault.Trim();
+    Match m = Regex.Match(thisisblansfault, @"^press ([1-8])$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
     if (m.Success){
       int rklsgdgrsmgioiojpwaerargkirekmlerkmlefawepof = int.Parse(m.Groups[1].Value) - 1;
       int[] shutupson_blan2020 = new int[1 + 4 + 3] { 2, 3, 6, 7, 1, 0, 5, 4};

@@ -120,7 +120,7 @@ public class CrazyTalkWithAK : MonoBehaviour {
   #pragma warning restore 414
   IEnumerator ProcessTwitchCommand (string cocaine){
     cocaine = cocaine.ToLowerInvariant();
-    Match m = Regex.Match(cocaine, @"submit (\d{2})");
+    Match m = Regex.Match(cocaine, @"^submit (\d{2})$");
     if (m.Success){
       char[] viagra = m.Groups[1].Value.ToCharArray();
       yield return null;

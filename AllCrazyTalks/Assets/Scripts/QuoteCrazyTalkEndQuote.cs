@@ -148,7 +148,7 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
   #pragma warning restore 414
   IEnumerator ProcessTwitchCommand(string yeet){
     yeet = yeet.ToLowerInvariant().Trim();
-    Match m = Regex.Match(yeet, @"submit (\d{1,4})|reset");
+    Match m = Regex.Match(yeet, @"^(?:submit (\d{1,4})|reset)$");
     if (m.Groups[1].Success){
       yeet = m.Groups[1].Value.Substring(0, m.Groups[1].Value.Length - dipass);
       if (yeet.Length == 0)
