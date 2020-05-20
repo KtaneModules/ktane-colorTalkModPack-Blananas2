@@ -26,7 +26,7 @@ public class JadenSmithTalk : MonoBehaviour {
         }
     }
     void Start () {
-      StartCoroutine(TheJade());
+      TheJade();
 	}
 	void ButtonsPress (KMSelectable Button) {
     Button.AddInteractionPunch();
@@ -37,15 +37,18 @@ public class JadenSmithTalk : MonoBehaviour {
           GetComponent<KMBombModule>().HandlePass();
           markiplierspiss.text = "Jaden Smith\nTalk";
           Audio.PlaySoundAtTransform("SolveSFX", transform);
+          Debug.LogFormat("[Jaden Smith Talk #{0}] You pressed {1}, which was correct. Module Solved.", moduleId, j == 0 ? "yes" : "no");
         }
         else {
           GetComponent<KMBombModule>().HandleStrike();
-          StartCoroutine(TheJade());
+          Debug.LogFormat("[Jaden Smith Talk #{0}] You pressed {1}, which was incorrect. Strike.", moduleId, j == 0 ? "yes" : "no");
+          TheJade();
         }
       }
     }
 	}
-  IEnumerator TheJade(){
+  private void TheJade()
+  {
     stiffcocks = UnityEngine.Random.Range(0,2);
     if (stiffcocks == 0) {
       temp = YesJaden.Phrases[UnityEngine.Random.Range(0,YesJaden.Phrases.Count())];
@@ -65,13 +68,7 @@ public class JadenSmithTalk : MonoBehaviour {
         }
         temp = newPhrase;
         markiplierspiss.text = temp;
-        Debug.LogFormat("[Mental Math #{0}] The phrase says {1}.", moduleId, temp);
-        if (stiffcocks == 0) {
-          Debug.LogFormat("[Mental Math #{0}] This was said by the Jade.", moduleId, temp);
-        }
-        else {
-          Debug.LogFormat("[Mental Math #{0}] This was not said by the Jade.", moduleId, temp);
-        }
+        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says {1}, and this was said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
     }
     else {
       temp = NoJaden.Phrases[UnityEngine.Random.Range(0,NoJaden.Phrases.Count())];
@@ -91,8 +88,8 @@ public class JadenSmithTalk : MonoBehaviour {
         }
         temp = newPhrase;
         markiplierspiss.text = temp;
+        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says {1}, and this was not said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
     }
-    yield return null;
   }
   //Twitch Plays
   #pragma warning disable 414
