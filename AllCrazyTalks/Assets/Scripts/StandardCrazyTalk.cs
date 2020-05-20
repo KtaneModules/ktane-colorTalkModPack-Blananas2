@@ -92,60 +92,71 @@ public class StandardCrazyTalk : MonoBehaviour {
             }
         }
         Debug.LogFormat("[Standard Crazy Talk #{0}] The split phrases are: \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\"", moduleId, splitMessage[0].Replace("\n", "#").Replace(" ", "#"), splitMessage[1].Replace("\n", "#").Replace(" ", "#"), splitMessage[2].Replace("\n", "#").Replace(" ", "#"), splitMessage[3].Replace("\n", "#").Replace(" ", "#"), splitMessage[4].Replace("\n", "#").Replace(" ", "#"));
-        Debug.Log(String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8}", colorNames[firstColor].ToLower(), firstPosition.ToString(), colorNames[secondColor].ToLower(), secondPosition.ToString(), distance.ToString(), ordinals[firstPosition], ordinals[secondPosition], placeNames[firstPosition],placeNames[secondPosition]));
-        Debug.Log(String.Format("C1 AT {0} | C2 AT {1}", colorOrder.IndexOf(colorNames[firstColor]), colorOrder.IndexOf(colorNames[secondColor])));
+        Debug.Log(String.Format("<Standard Crazy Talk #{9}> {0} {1} {2} {3} {4} {5} {6} {7} {8}", colorNames[firstColor].ToLower(), firstPosition.ToString(), colorNames[secondColor].ToLower(), secondPosition.ToString(), distance.ToString(), ordinals[firstPosition], ordinals[secondPosition], placeNames[firstPosition],placeNames[secondPosition], moduleId));
+        Debug.Log(String.Format("<Standard Crazy Talk #{2}> C1 AT {0} | C2 AT {1}", colorOrder.IndexOf(colorNames[firstColor]), colorOrder.IndexOf(colorNames[secondColor]), moduleId));
 
         switch (selectedPhrase) {
           case 0:
           if (colorOrder.IndexOf(colorNames[firstColor]) == firstPosition - 1) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, returns {3}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "true" : "false");
           break;
           case 1:
           if (colorOrder.IndexOf(colorNames[firstColor]) + 1 == colorOrder.IndexOf(colorNames[secondColor]) || colorOrder.IndexOf(colorNames[firstColor]) - 1 == colorOrder.IndexOf(colorNames[secondColor])) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to yours = {2} left = {3} right = {4}, returns {5}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[secondColor]), colorOrder.IndexOf(colorNames[firstColor]) - 1, colorOrder.IndexOf(colorNames[firstColor]) + 1, verdict ? "true" : "false");
           break;
           case 2:
           if (colorOrder.IndexOf(colorNames[firstColor]) > colorOrder.IndexOf(colorNames[secondColor])) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2} which is {3}greater than {4}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ", colorOrder.IndexOf(colorNames[secondColor]));
           break;
           case 3:
           if (colorOrder.IndexOf(colorNames[secondColor]) > colorOrder.IndexOf(colorNames[firstColor])) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2} which is {3}greater than {4}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[secondColor]), verdict ? "" : "not ", colorOrder.IndexOf(colorNames[firstColor]));
           break;
           case 4:
           if (colorOrder.IndexOf(colorNames[firstColor]) + distance == colorOrder.IndexOf(colorNames[secondColor]) || colorOrder.IndexOf(colorNames[firstColor]) - distance == colorOrder.IndexOf(colorNames[secondColor])) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, I'm not logging this. it's 1 am. if it breaks, it breaks. ", moduleId, selectedPhrase);
           break;
           case 5:
           if (colorOrder.IndexOf(colorNames[firstColor]) == 4) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, which is {3}equal to 4", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ");
           break;
           case 6: if (colorOrder.IndexOf(colorNames[firstColor]) == 0) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, which is {3}equal to 0", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ");
           break;
           case 7: if (colorOrder.IndexOf(colorNames[firstColor]) == 1) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, which is {3}equal to 1", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ");
           break;
           case 8: if (colorOrder.IndexOf(colorNames[firstColor]) == 2) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, which is {3}equal to 2", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ");
           break;
           case 9: if (colorOrder.IndexOf(colorNames[firstColor]) == 3) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, which is {3}equal to 3", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "" : "not ");
           break;
           case 10:
           if (firstPosition == colorOrder.IndexOf(colorNames[firstColor]) || firstPosition == colorOrder.IndexOf(colorNames[secondColor])) {
             verdict = true;
           }
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}. firstposition = {2}, firstColor is {3}, secondColor is {4}. returns {5}", moduleId, selectedPhrase, firstPosition, colorOrder.IndexOf(colorNames[firstColor]), colorOrder.IndexOf(colorNames[secondColor]), verdict ? "true" : "false");
           break;
           default:
           GetComponent<KMBombModule>().HandlePass();
@@ -171,8 +182,8 @@ public class StandardCrazyTalk : MonoBehaviour {
     }
     void oButtonPress(KMSelectable oButton) {
         for (int i = 0; i < 5; i++) {
-            if (oButton == OtherButtons[i]) { //BL BR TR TL SL
-              Debug.Log("DIldos" + i);
+            if (oButton == OtherButtons[i]) { //SL TL TR BL BR
+              //Debug.Log("DIldos" + i);
                 if (verdict == true && i == firstPosition) {
                   GetComponent<KMBombModule>().HandlePass();
                   Audio.PlaySoundAtTransform("FTANG", transform);
@@ -180,6 +191,7 @@ public class StandardCrazyTalk : MonoBehaviour {
                   MainText.text = "Standard Crazy\nTalk";
                   message = "Press the V in lives.";
                   splitMessage[0] = ""; splitMessage[1] = ""; splitMessage[2] = ""; splitMessage[3] = ""; splitMessage[4] = "";
+                  Debug.LogFormat("[Standard Crazy Talk #{0}] You pressed {1}, which was correct. Module Solved.", moduleId, i == 0 ? "the status light" : i == 1 ? "TL" : i == 2 ? "TR" : i == 3 ? "BL" : i == 4 ? "BR" : "bug");
                   for (int q = 0; q < message.Length; q++) {
                       if (message[q] == '\n') {
                           splitMessage[0] += "\n";
@@ -206,6 +218,7 @@ public class StandardCrazyTalk : MonoBehaviour {
                   MainText.text = "Standard Crazy\nTalk";
                   message = "Press the V in lives.";
                   splitMessage[0] = ""; splitMessage[1] = ""; splitMessage[2] = ""; splitMessage[3] = ""; splitMessage[4] = "";
+                  Debug.LogFormat("[Standard Crazy Talk #{0}] You pressed {1}, which was correct. Module Solved.", moduleId, i == 0 ? "the status light" : i == 1 ? "TL" : i == 2 ? "TR" : i == 3 ? "BL" : i == 4 ? "BR" : "bug");
                   for (int q = 0; q < message.Length; q++) {
                       if (message[q] == '\n') {
                           splitMessage[0] += "\n";
@@ -226,8 +239,9 @@ public class StandardCrazyTalk : MonoBehaviour {
                   }
                 }
                 else {
-                  GetComponent<KMBombModule>().HandleStrike();
-                  Audio.PlaySoundAtTransform("Bitch", transform);
+                    GetComponent<KMBombModule>().HandleStrike();
+                    Audio.PlaySoundAtTransform("Bitch", transform);
+                    Debug.LogFormat("[Standard Crazy Talk #{0}] You pressed {1}, which was incorrect. Strike.", moduleId, i == 0 ? "the status light" : i == 1 ? "TL" : i == 2 ? "TR" : i == 3 ? "BL" : i == 4 ? "BR" : "bug");
                 }
             }
         }
