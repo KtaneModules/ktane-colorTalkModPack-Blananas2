@@ -97,10 +97,10 @@ public class StandardCrazyTalk : MonoBehaviour {
 
         switch (selectedPhrase) {
           case 0:
-          if (colorOrder.IndexOf(colorNames[firstColor]) == firstPosition - 1) {
+          if (colorOrder.IndexOf(colorNames[firstColor]) == firstPosition) {
             verdict = true;
           }
-          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, evaluates to {2}, returns {3}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), verdict ? "true" : "false");
+          Debug.LogFormat("<Standard Crazy Talk #{0}> case {1}, color wanted is {2}, position wanted it {3}, returns {4}", moduleId, selectedPhrase, colorOrder.IndexOf(colorNames[firstColor]), firstPosition, verdict ? "true" : "false");
           break;
           case 1:
           if (colorOrder.IndexOf(colorNames[firstColor]) + 1 == colorOrder.IndexOf(colorNames[secondColor]) || colorOrder.IndexOf(colorNames[firstColor]) - 1 == colorOrder.IndexOf(colorNames[secondColor])) {
