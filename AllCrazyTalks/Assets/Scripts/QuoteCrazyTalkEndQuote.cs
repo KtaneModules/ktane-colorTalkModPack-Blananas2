@@ -141,7 +141,7 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     FUCK.text = " ";
     yield return new WaitForSeconds(0.25f);
     StartCoroutine(SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS());
-  } 
+  }
   //Twitch Plays
   #pragma warning disable 414
   private readonly string TwitchHelpMessage = @"Use !{0} submit 6969 to submit 6969. Use !{0} reset to reset the input.";
@@ -150,7 +150,7 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     yeet = yeet.ToLowerInvariant().Trim();
     Match m = Regex.Match(yeet, @"^(?:submit (\d{1,4})|reset)$");
     if (m.Groups[1].Success){
-      yeet = m.Groups[1].Value.Substring(0, m.Groups[1].Value.Length - dipass);
+      yeet = m.Groups[1].Value.Substring(0, Math.Min(4 - dipass, m.Groups[1].Value.Length));
       if (yeet.Length == 0)
         yield break;
       yield return null;
