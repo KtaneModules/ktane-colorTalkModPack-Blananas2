@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -325,7 +325,7 @@ public class StandardCrazyTalk : MonoBehaviour {
             }
         }
         else
-            yield return "sendtochaterror Valid commands are highlight, cycle, and press. Use !{1} help to find the full commands.";
+            yield return "sendtochaterror Valid commands are highlight, cycle, press, and setspeed. Use !{1} help to find the full commands.";
         yield break;
     }
     IEnumerator TwitchHandleForcedSolve(){
