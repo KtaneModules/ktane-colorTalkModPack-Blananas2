@@ -437,6 +437,7 @@ public class KiloTalk : MonoBehaviour {
     int gofuckyourself = 0;
     string space = "";
     int anotherfuckingvariable = 0;
+    int eyebleach = -1;
     int fuck = 0;
     int shit = 0;
     int cunt = 0;
@@ -551,7 +552,8 @@ public class KiloTalk : MonoBehaviour {
           Idontfuckingknow *= 9807f;
           break;
           case 1:
-          Idontfuckingknow *= 1000000f;
+          eyebleach = (int) Idontfuckingknow;
+          eyebleach *= 1000000;
           break;
           case 2:
           Idontfuckingknow *= 1000f;
@@ -652,7 +654,8 @@ public class KiloTalk : MonoBehaviour {
           Idontfuckingknow *= 8896f;
           break;
           case 1:
-          Idontfuckingknow *= 907185f;
+          eyebleach = (int) Idontfuckingknow;
+          eyebleach *= 907185;
           break;
           case 2:
           Idontfuckingknow *= 907.185f;
@@ -672,7 +675,11 @@ public class KiloTalk : MonoBehaviour {
         }
         break;
       }
-      anotherfuckingvariable = (int)Idontfuckingknow;
+      if (eyebleach == -1) {
+          anotherfuckingvariable = (int)Idontfuckingknow;
+      } else {
+          anotherfuckingvariable = eyebleach;
+      }
       Debug.LogFormat("[Kilo Talk #{0}] Adjusting by the value gives you {1}.", moduleId, Idontfuckingknow);
 	}
 	void DisplaysPress (KMSelectable Display) {
