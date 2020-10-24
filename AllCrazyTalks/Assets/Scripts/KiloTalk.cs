@@ -552,7 +552,7 @@ public class KiloTalk : MonoBehaviour {
           Idontfuckingknow *= 9807f;
           break;
           case 1:
-          eyebleach = Idontfuckingknow;
+          eyebleach = (int) Idontfuckingknow;
           eyebleach *= 1000000;
           break;
           case 2:
@@ -654,7 +654,7 @@ public class KiloTalk : MonoBehaviour {
           Idontfuckingknow *= 8896f;
           break;
           case 1:
-          eyebleach = Idontfuckingknow;
+          eyebleach = (int) Idontfuckingknow;
           eyebleach *= 907185;
           break;
           case 2:
