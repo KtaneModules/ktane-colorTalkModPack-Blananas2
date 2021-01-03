@@ -1,4 +1,4 @@
-
+//Note for future me: If this module gets another floating point error, just rewrite the fucking code for the mod.
 
 
 
@@ -559,7 +559,8 @@ public class KiloTalk : MonoBehaviour {
           Idontfuckingknow *= 1000f;
           break;
           case 5:
-          Idontfuckingknow *= 68.52f;
+          Idontfuckingknow *= 6852;
+		  Idontfuckingknow /= 100;
           break;
           case 6:
           Idontfuckingknow *= 2205f;
@@ -680,7 +681,8 @@ public class KiloTalk : MonoBehaviour {
       } else {
           anotherfuckingvariable = eyebleach;
       }
-      Debug.LogFormat("[Kilo Talk #{0}] Adjusting by the value gives you {1}.", moduleId, Idontfuckingknow);
+      Debug.LogFormat("[Kilo Talk #{0}] Adjusting by the value gives you {1}.", moduleId, anotherfuckingvariable);
+	  Debug.LogFormat("[Kilo Talk #{0}] The answer it's looking for is {1}.", moduleId, anotherfuckingvariable % 1000);
 	}
 	void DisplaysPress (KMSelectable Display) {
     Display.AddInteractionPunch();
@@ -706,7 +708,7 @@ public class KiloTalk : MonoBehaviour {
       GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Submit.transform);
         if ((fuck * 100) + (shit * 10) + cunt == anotherfuckingvariable % 1000)
         {
-            Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Module disarmed.", moduleId, Idontfuckingknow);
+            Debug.LogFormat("[Kilo Talk #{0}] You submitted {1}. Module disarmed.", moduleId, anotherfuckingvariable % 1000);
             GetComponent<KMBombModule>().HandlePass();
             Audio.PlaySoundAtTransform("Kachow", transform);
             Fatasses[0].text = "4";
