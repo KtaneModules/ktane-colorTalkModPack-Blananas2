@@ -21,7 +21,7 @@ public class KMazeyTalk : MonoBehaviour {
     private List<int> WeedKhungus = new List<int>{16,18,20,22,24,26,28,46,48,50,52,54,56,58,76,78,80,82,84,86,88,106,108,110,112,114,116,118,136,138,140,142,144,146,148,166,168,170,172,174,176,178,196,198,200,202,204,206,208,226,228,230,232,234,236,238,256,258,260,262,264,266,268,286,288,290,292,294,296,298,316,318,320,322,324,326,328,346,348,350,352,354,356,358};
     int Youisdumb = 0;
     int Initial = 0;
-    bool EDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJD = false;
+    bool REPLACEDONE = false;
     char VibeCheck = '-';
     string Maze =
 "---------------"+ //0-14
@@ -53,35 +53,49 @@ public class KMazeyTalk : MonoBehaviour {
     int weed = 0;
     int Wavecheck = 0;
     bool Vibin = false;
+    int BigIfSad = -1;
+    string OneDeeChess = "";
+
+    private Coroutine buttonHold;
+	private bool holding = false;
+
     void Awake () {
         moduleId = moduleIdCounter++;
         foreach (KMSelectable Button in Buttons) {
             Button.OnInteract += delegate () { ButtonPress(Button); return false; };
         }
-        Submit.OnInteract += delegate () { PressSubmit(); return false; };
+        Submit.OnInteract += delegate () { SubPress(); return false; };
+        Submit.OnInteractEnded += delegate { SubRelease(); };
         weed = 16;
     }
+
     void Start () {
       while(VibeCheck != 'X'){
       Youisdumb = UnityEngine.Random.Range(0,Maze.Length);
+      BigIfSad = Youisdumb;
       VibeCheck = Maze[Youisdumb];
       }
       while(Climax != 'X'){
         Wavecheck = UnityEngine.Random.Range(0,Maze.Length);
+        while (Wavecheck == Youisdumb) {
+            Wavecheck = UnityEngine.Random.Range(0,Maze.Length);
+        }
         Climax = Maze[Wavecheck];
       }
-      Debug.Log(Youisdumb);
+      //Debug.Log(Youisdumb);
       for (int i = 0; i < 84; i++) {
         if (Wavecheck == WeedKhungus[i]) {
           Display.text = KMazeyTalk1.phrases[i];
-          Debug.LogFormat("[KayMazey Talk #{0}] Your ending phrase is \"{1}\".",moduleId,KMazeyTalk1.phrases[i]);
+          Debug.LogFormat("[KayMazey Talk #{0}] Your ending phrase is \"{1}\".",moduleId,KMazeyTalk1.phrases[i].Replace("\n", ""));
+          OneDeeChess = KMazeyTalk1.phrases[i];
         }
       }
 	}
+
   void ButtonPress(KMSelectable Button){
     Button.AddInteractionPunch();
     GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Button.transform);
-    if (EDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJD == true) {
+    if (REPLACEDONE == true) {
       if (Button == Buttons[0]) { //right
         Youisdumb += 1;
         if (Maze[Youisdumb] == 'O') {
@@ -125,7 +139,7 @@ public class KMazeyTalk : MonoBehaviour {
       else {
         Debug.Log("Fuck");
       }
-      Debug.Log(Youisdumb);
+      //Debug.Log(Youisdumb);
 
       for (int i = 0; i < 84; i++) {
         if (Youisdumb == WeedKhungus[i]) {
@@ -134,18 +148,53 @@ public class KMazeyTalk : MonoBehaviour {
       }
     }
   }
-  void PressSubmit(){
-    Submit.AddInteractionPunch();
+
+  void SubPress () {
+        Submit.AddInteractionPunch();
+            if (buttonHold != null)
+    		{
+    			holding = false;
+    			StopCoroutine(buttonHold);
+    			buttonHold = null;
+    		}
+
+    	buttonHold = StartCoroutine(HoldChecker());
+    }
+
+    void SubRelease () {
+        StopCoroutine(buttonHold);
+        if (holding) {
+            for (int i = 0; i < 84; i++) {
+              if (BigIfSad == WeedKhungus[i]) {
+                Youisdumb = BigIfSad;
+                Display.text = "\"" + KMazeyTalk1.phrases[i] + "\"\n to \n\"" + OneDeeChess + "\"";
+                Debug.LogFormat("[KayMazey Talk #{0}] Resetting... back to \"{1}\"",moduleId,KMazeyTalk1.phrases[i].Replace("\n", ""));
+              }
+            }
+        } else {
+            ActuallySubmit();
+        }
+        holding = false;
+    }
+
+    IEnumerator HoldChecker()
+    {
+    	yield return new WaitForSeconds(0.4f);
+    	holding = true;
+    }
+
+  void ActuallySubmit(){
+    //Submit.AddInteractionPunch();
     GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Submit.transform);
-    if (EDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJD == false) {
-      EDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJDEDFGHJKUFHALDFHKAJFNLKWFNLKAJD = true;
+    if (REPLACEDONE == false) {
+      REPLACEDONE = true;
     }
     if (Vibin == false) {
       Vibin = true;
       for (int i = 0; i < 84; i++) {
         if (Youisdumb == WeedKhungus[i]) {
           Display.text = KMazeyTalk1.phrases[i];
-          Debug.LogFormat("[KayMazey Talk #{0}] Your current phrase is \"{1}\".",moduleId,KMazeyTalk1.phrases[i]);
+          Debug.LogFormat("[KayMazey Talk #{0}] Your current phrase is \"{1}\".",moduleId,KMazeyTalk1.phrases[i].Replace("\n", ""));
         }
       }
     }
@@ -158,7 +207,8 @@ public class KMazeyTalk : MonoBehaviour {
       GetComponent<KMBombModule>().HandleStrike();
     }
   }
-  //Twitch Plays
+
+  //Toilet Paper
   #pragma warning disable 414
   private readonly string TwitchHelpMessage = @"Use !{0} move UDRL to move around the maze. Use !{0} circle to press the circle.";
   #pragma warning restore 414
@@ -184,6 +234,7 @@ public class KMazeyTalk : MonoBehaviour {
       yield return null;
       Submit.OnInteract();
       yield return new WaitForSeconds(.1f);
+      Submit.OnInteractEnded();
     }
     else
       yield return "sendtochaterror Valid commands are move and circle. Use !{1} help to see the full commands.";

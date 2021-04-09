@@ -53,7 +53,7 @@ public class ArrowTalk : MonoBehaviour {
       while(FUCKbutasastring.Length < 8){
         FUCKbutasastring = "0" + FUCKbutasastring;
       }
-      Debug.LogFormat("[Arrow Talk #{0}] The starting rotations with 1 being turned and 0 being correct is {1} (in the order given in the manual).", moduleId, FUCKbutasastring.Replace("\n"," "));
+      Debug.LogFormat("<Arrow Talk #{0}> The starting rotations with 1 being turned and 0 being correct is {1} (in the order given in the manual).", moduleId, FUCKbutasastring.Replace("\n"," "));
       for (int i = 0; i < 8; i++) {
         if (FUCKbutasastring[i] == '1') {
           fats[i].transform.Rotate(0f,180f,0f);
@@ -236,7 +236,7 @@ public class ArrowTalk : MonoBehaviour {
       fats[shutupson_blan2020[rklsgdgrsmgioiojpwaerargkirekmlerkmlefawepof]].OnInteract();
       yield return new WaitForSeconds(.1f);
     }
-    else 
+    else
       yield return "sendtochaterror Valid command is press. Use !{1} help to see the full command";
     yield break;
   }

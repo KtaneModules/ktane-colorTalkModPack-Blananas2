@@ -454,18 +454,18 @@ public class KiloTalk : MonoBehaviour {
     void Start () {
       Idontfuckingknow = UnityEngine.Random.Range(2,1000);
       Idontfuckingknow = Idontfuckingknow - (Idontfuckingknow % 1);
-      gofuckyourself = UnityEngine.Random.Range(0,Units.Count());
-      gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count());
+      gofuckyourself = UnityEngine.Random.Range(0,Units.Count()-1) + 1;
+      gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count()-1) + 1;
       while (gofuckyourselftwo == gofuckyourself) {
         gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count());
       }
-      Debug.LogFormat("[Kilo Talk #{0}] The starting value is {1}{2}. The target unit is {3}.", moduleId, Idontfuckingknow, Units[gofuckyourself],Units[gofuckyourselftwo]);
+      Debug.LogFormat("[Kilo Talk #{0}] The starting value is {1}{2}. The target unit is{3}.", moduleId, Idontfuckingknow, Units[gofuckyourself],Units[gofuckyourselftwo]);
       Fatass.text = Idontfuckingknow.ToString() + Units[gofuckyourself] + "\n"+ space + "to" + Units[gofuckyourselftwo];
       for (int i = 0; i < 3; i++) {
           Fatasses[i].text = "0";
       }
       switch (gofuckyourself) {
-        case 0:
+        /*case 0:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
           case 1:
           Idontfuckingknow *= 102f;
@@ -493,12 +493,12 @@ public class KiloTalk : MonoBehaviour {
           break;
           default: break;
         }
-        break;
+        break;*/
         case 1:
         switch (gofuckyourselftwo) {
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 0.009807f;
-          break;
+          break;*/
           case 2:
           Idontfuckingknow *= 0.001f;
           break;
@@ -522,9 +522,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 2:
         switch (gofuckyourselftwo) {
-		  case 0:
+		  /*case 0:
           Idontfuckingknow *= 9.807f;
-          break;
+          break;*/
           case 1:
           Idontfuckingknow *= 1000f;
           break;
@@ -548,9 +548,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 3: case 4:
         switch (gofuckyourselftwo) {
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 9807f;
-          break;
+          break;*/
           case 1:
           eyebleach = (int) Idontfuckingknow;
           eyebleach *= 1000000;
@@ -576,9 +576,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 5:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 143.1f;
-          break;
+          break;*/
           case 1:
           Idontfuckingknow *= 14594f;
           break;
@@ -601,9 +601,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 6:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 4.448f;
-          break;
+          break;*/
           case 1:
           Idontfuckingknow *= 453.6f;
           break;
@@ -626,9 +626,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 7:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 0.278f;
-          break;
+          break;*/
           case 1:
           Idontfuckingknow *= 28.3495f;
           break;
@@ -651,9 +651,9 @@ public class KiloTalk : MonoBehaviour {
         break;
         case 8:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
-          case 0:
+          /*case 0:
           Idontfuckingknow *= 8896f;
-          break;
+          break;*/
           case 1:
           eyebleach = (int) Idontfuckingknow;
           eyebleach *= 907185;

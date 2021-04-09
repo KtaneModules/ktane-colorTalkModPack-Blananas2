@@ -68,7 +68,7 @@ public class JadenSmithTalk : MonoBehaviour {
         }
         temp = newPhrase;
         markiplierspiss.text = temp;
-        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says {1}, and this was said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
+        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says \"{1}\", and this was said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
     }
     else {
       temp = NoJaden.Phrases[UnityEngine.Random.Range(0,NoJaden.Phrases.Count())];
@@ -88,7 +88,7 @@ public class JadenSmithTalk : MonoBehaviour {
         }
         temp = newPhrase;
         markiplierspiss.text = temp;
-        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says {1}, and this was not said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
+        Debug.LogFormat("[Jaden Smith Talk #{0}] The phrase says \"{1}\", and this was not said by Jaden Smith.", moduleId, temp.Replace("\n", " "));
     }
   }
   //Twitch Plays

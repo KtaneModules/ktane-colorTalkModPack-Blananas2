@@ -11,6 +11,8 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     public KMBombInfo Bomb;
     public KMAudio Audio;
     public KMSelectable button;
+    public KMSelectable espik;
+    public GameObject eRr0r;
     public TextMesh jdakgflanfadkgnalk;
     public TextMesh FUCK;
     static int moduleIdCounter = 1;
@@ -25,10 +27,12 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
     int uh = 0;
     int dipass = 0;
     int retard5 = 0;
+    float zoom = 0.5f;
 
     void Awake () {
         moduleId = moduleIdCounter++;
         button.OnInteract += delegate () { PressButton(); return false; };
+        espik.OnInteract += delegate () { InitiateCrack(); return false; };
     }
 
     void Start () {
@@ -45,6 +49,30 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
       StartCoroutine(uhhh());
       StartCoroutine(SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS());
 	}
+
+    void InitiateCrack () {
+        espik.AddInteractionPunch();
+        GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
+        switch (zoom.ToString()) {
+            case "0.5":
+                zoom = 0.75f;
+                eRr0r.transform.localRotation = Quaternion.Euler(90f, 90f, 0f);
+            break;
+            case "0.75":
+                zoom = 1.0f;
+                eRr0r.transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
+            break;
+            case "1":
+                zoom = 0.25f;
+                eRr0r.transform.localRotation = Quaternion.Euler(90f, 270f, 0f);
+            break;
+            case "0.25":
+                zoom = 0.5f;
+                eRr0r.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            break;
+            default: Debug.Log("CRACK COCAINE HAS FAILED US"); break;
+        }
+    }
 
 	void PressButton () {
     button.AddInteractionPunch();
@@ -72,74 +100,74 @@ public class QuoteCrazyTalkEndQuote : MonoBehaviour {
 	}
   IEnumerator uhhh(){
     jdakgflanfadkgnalk.text = QuoteCrazyTalkPhrases.phrases[retard1];
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = " ";
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = QuoteCrazyTalkPhrases.phrases[retard21];
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = " ";
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = QuoteCrazyTalkPhrases.phrases[retard3];
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = " ";
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = QuoteCrazyTalkPhrases.phrases[retard4];
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(zoom);
     jdakgflanfadkgnalk.text = " ";
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(zoom*2);
     StartCoroutine(uhhh());
   }
   IEnumerator SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS(){
     FUCK.text = "0";
     uh = 0;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "1";
     uh = 1;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "2";
     uh = 2;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "3";
     uh = 3;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "4";
     uh = 4;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "5";
     uh = 5;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "6";
     uh = 6;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "7";
     uh = 7;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "8";
     uh = 8;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = "9";
     uh = 9;
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     FUCK.text = " ";
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(zoom/2);
     StartCoroutine(SHITPISSCOCKSUCKERMOTHERFUCKERCUNTFUCKTITS());
   }
   //Twitch Plays
