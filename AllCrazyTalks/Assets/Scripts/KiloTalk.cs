@@ -429,7 +429,7 @@ public class KiloTalk : MonoBehaviour {
     public KMAudio Audio;
     public KMSelectable[] Displays;
     public KMSelectable Submit; //Newtons Grams Kilograms Tonnes "Metric Ton" Slug Pound Ounce
-    private List<string> Units = new List<string>{" Newtons"," Grams"," Kilograms"," Tonnes"," Metric Tons"," Slugs"," Pounds"," Ounces", " Tons"};
+    private List<string> Units = new List<string>{" Grams"," Kilograms"," Tonnes"," Metric Tons"," Slugs"," Pounds"," Ounces", " Tons"};
     public TextMesh Fatass;
     public TextMesh[] Fatasses;
     float Idontfuckingknow = 420;
@@ -454,8 +454,8 @@ public class KiloTalk : MonoBehaviour {
     void Start () {
       Idontfuckingknow = UnityEngine.Random.Range(2,1000);
       Idontfuckingknow = Idontfuckingknow - (Idontfuckingknow % 1);
-      gofuckyourself = UnityEngine.Random.Range(0,Units.Count()-1) + 1;
-      gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count()-1) + 1;
+      gofuckyourself = UnityEngine.Random.Range(0,Units.Count());
+      gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count());
       while (gofuckyourselftwo == gofuckyourself) {
         gofuckyourselftwo = UnityEngine.Random.Range(0,Units.Count());
       }
@@ -494,183 +494,183 @@ public class KiloTalk : MonoBehaviour {
           default: break;
         }
         break;*/
-        case 1:
+        case 0:
         switch (gofuckyourselftwo) {
           /*case 0:
           Idontfuckingknow *= 0.009807f;
           break;*/
-          case 2:
+          case 1:
           Idontfuckingknow *= 0.001f;
           break;
-          case 3:case 4:
+          case 2:case 3:
           Idontfuckingknow *= 0.000001f;
           break;
-          case 5:
+          case 4:
           Idontfuckingknow *= 0.00006852f;
           break;
-          case 6:
+          case 5:
           Idontfuckingknow *= 0.002205f;
           break;
-          case 7:
+          case 6:
           Idontfuckingknow *= 0.03527f;
           break;
-          case 8:
+          case 7:
           Idontfuckingknow *= 0.000001102f;
           break;
           default: break;
         }
         break;
-        case 2:
+        case 1:
         switch (gofuckyourselftwo) {
 		  /*case 0:
           Idontfuckingknow *= 9.807f;
           break;*/
-          case 1:
+          case 0:
           Idontfuckingknow *= 1000f;
           break;
-          case 3:case 4:
+          case 2:case 3:
           Idontfuckingknow *= 0.001f;
           break;
-          case 5:
+          case 4:
           Idontfuckingknow *= 0.06852f;
           break;
-          case 6:
+          case 5:
           Idontfuckingknow *= 2.205f;
           break;
-          case 7:
+          case 6:
           Idontfuckingknow *= 35.27f;
           break;
-          case 8:
+          case 7:
           Idontfuckingknow *= 0.001102f;
           break;
           default: break;
         }
         break;
-        case 3: case 4:
+        case 2: case 3:
         switch (gofuckyourselftwo) {
           /*case 0:
           Idontfuckingknow *= 9807f;
           break;*/
-          case 1:
+          case 0:
           eyebleach = (int) Idontfuckingknow;
           eyebleach *= 1000000;
           break;
-          case 2:
+          case 1:
           Idontfuckingknow *= 1000f;
           break;
-          case 5:
+          case 4:
           Idontfuckingknow *= 6852;
 		  Idontfuckingknow /= 100;
           break;
-          case 6:
+          case 5:
           Idontfuckingknow *= 2205f;
           break;
-          case 7:
+          case 6:
           Idontfuckingknow *= 35274f;
           break;
-          case 8:
+          case 7:
           Idontfuckingknow *= 1.102f;
           break;
 		  default: break; //you can still get 3 or 4 from here
         }
         break;
-        case 5:
+        case 4:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
           /*case 0:
           Idontfuckingknow *= 143.1f;
           break;*/
-          case 1:
+          case 0:
           Idontfuckingknow *= 14594f;
           break;
-          case 2:
+          case 1:
           Idontfuckingknow *= 14.594f;
           break;
-          case 3: case 4:
+          case 2: case 3:
           Idontfuckingknow *= 0.01459f;
           break;
-          case 6:
+          case 5:
           Idontfuckingknow *= 32.17f;
           break;
-          case 7:
+          case 6:
           Idontfuckingknow *= 514.8f;
           break;
-          case 8:
+          case 7:
           Idontfuckingknow *= 0.01609f;
+          break;
+        }
+        break;
+        case 5:
+        switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
+          /*case 0:
+          Idontfuckingknow *= 4.448f;
+          break;*/
+          case 0:
+          Idontfuckingknow *= 453.6f;
+          break;
+          case 1:
+          Idontfuckingknow *= 0.4536f;
+          break;
+          case 2: case 3:
+          Idontfuckingknow *= 0.0004536f;
+          break;
+          case 4:
+          Idontfuckingknow *= 0.03108f;
+          break;
+          case 6:
+          Idontfuckingknow *= 16f;
+          break;
+          case 7:
+          Idontfuckingknow *= 0.0005f;
           break;
         }
         break;
         case 6:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
           /*case 0:
-          Idontfuckingknow *= 4.448f;
+          Idontfuckingknow *= 0.278f;
           break;*/
+          case 0:
+          Idontfuckingknow *= 28.3495f;
+          break;
           case 1:
-          Idontfuckingknow *= 453.6f;
+          Idontfuckingknow *= 0.0283495f;
           break;
-          case 2:
-          Idontfuckingknow *= 0.4536f;
+          case 2: case 3:
+          Idontfuckingknow *= 0.00002835f;
           break;
-          case 3: case 4:
-          Idontfuckingknow *= 0.0004536f;
+          case 4:
+          Idontfuckingknow *= 0.001943f;
           break;
           case 5:
-          Idontfuckingknow *= 0.03108f;
+          Idontfuckingknow *= 0.0625f;
           break;
           case 7:
-          Idontfuckingknow *= 16f;
-          break;
-          case 8:
-          Idontfuckingknow *= 0.0005f;
+          Idontfuckingknow *= 0.00003125f;
           break;
         }
         break;
         case 7:
         switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
           /*case 0:
-          Idontfuckingknow *= 0.278f;
-          break;*/
-          case 1:
-          Idontfuckingknow *= 28.3495f;
-          break;
-          case 2:
-          Idontfuckingknow *= 0.0283495f;
-          break;
-          case 3: case 4:
-          Idontfuckingknow *= 0.00002835f;
-          break;
-          case 5:
-          Idontfuckingknow *= 0.001943f;
-          break;
-          case 6:
-          Idontfuckingknow *= 0.0625f;
-          break;
-          case 8:
-          Idontfuckingknow *= 0.00003125f;
-          break;
-        }
-        break;
-        case 8:
-        switch (gofuckyourselftwo) { //0Newtons 1Grams 2Kilograms 3Tonnes 4"Metric Ton" 5Slug 6Pound 7Ounce 8Ton
-          /*case 0:
           Idontfuckingknow *= 8896f;
           break;*/
-          case 1:
+          case 0:
           eyebleach = (int) Idontfuckingknow;
           eyebleach *= 907185;
           break;
-          case 2:
+          case 1:
           Idontfuckingknow *= 907.185f;
           break;
-          case 3: case 4:
+          case 2: case 3:
           Idontfuckingknow *= 0.9072f;
           break;
-          case 5:
+          case 4:
           Idontfuckingknow *= 62.16f;
           break;
-          case 6:
+          case 5:
           Idontfuckingknow *= 2000f;
           break;
-          case 7:
+          case 6:
           Idontfuckingknow *= 32000f;
           break;
         }
