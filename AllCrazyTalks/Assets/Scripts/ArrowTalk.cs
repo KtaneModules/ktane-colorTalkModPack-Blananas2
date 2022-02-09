@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -34,6 +34,7 @@ public class ArrowTalk : MonoBehaviour {
     string whateverthehell = "";
     bool ColoredSwitches = false;
     bool BlanHasNowAlsoBecomeRetardedHelp = false;
+    bool pp = false;
 
     void Awake () {
         moduleId = moduleIdCounter++;
@@ -218,8 +219,11 @@ public class ArrowTalk : MonoBehaviour {
     yield return null;
   }
   IEnumerator Imeanwhyevenbother(){
-    Debug.LogFormat("[Arrow Talk #{0}] All the arrows point inwards. Module disarmed.", moduleId);
-    Candela.text = "Arrow\nTalk";
+    if (!pp) {
+      Debug.LogFormat("[Arrow Talk #{0}] All the arrows point inwards. Module disarmed.", moduleId);
+      Candela.text = "Arrow\nTalk";
+      pp = true;
+    }
     yield return null;
   }
   //Twitch Plays
