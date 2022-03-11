@@ -1615,7 +1615,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149871488336578}
-  m_Text: 4
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1636,7 +1636,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624669382945130}
-  m_Text: 2
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1676,13 +1676,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bomb: {fileID: 114277301596578110}
   Audio: {fileID: 114321043565703238}
-  Displays:
+  Screens:
   - {fileID: 114432840839013552}
   - {fileID: 114619177112208908}
   - {fileID: 114642123837161076}
   Submit: {fileID: 114915734670639284}
-  Fatass: {fileID: 102097617162247152}
-  Fatasses:
+  Statement: {fileID: 102097617162247152}
+  Nums:
   - {fileID: 102400919466411218}
   - {fileID: 102911284192532638}
   - {fileID: 102309497993219664}
