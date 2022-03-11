@@ -142,17 +142,17 @@ public class KiloTalk : MonoBehaviour
         while (hundreds != p[0] - '0')
         {
             Screens[0].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         while (tens != p[1] - '0')
         {
             Screens[1].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         while (ones != p[2] - '0')
         {
             Screens[2].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         Submit.OnInteract();
     }
@@ -165,17 +165,17 @@ public class KiloTalk : MonoBehaviour
         while (hundreds != h)
         {
             Screens[0].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         while (tens != t)
         {
             Screens[1].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         while (ones != o)
         {
             Screens[2].OnInteract();
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.097f);
         }
         Submit.OnInteract();
     }
