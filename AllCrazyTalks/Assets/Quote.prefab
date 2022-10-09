@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 114914414058010784}
   - component: {fileID: 114582741260760830}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: Important Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 114397916692493032}
   - component: {fileID: 114320100688005324}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Important Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1989,10 +1989,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 114763741548843854}
   Children:
-  - {fileID: 114397916692493032}
   - {fileID: 114914414058010784}
+  - {fileID: 114397916692493032}
   IsPassThrough: 0
-  ChildRowLength: 0
+  ChildRowLength: 1
   Highlight: {fileID: 114842238078460400}
   SelectableColliders: []
   DefaultSelectableIndex: 0

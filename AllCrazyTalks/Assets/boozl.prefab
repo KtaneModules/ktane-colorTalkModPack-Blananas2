@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 114763741548843854}
   - component: {fileID: 114114681467786462}
   m_Layer: 0
-  m_Name: OBAMA
+  m_Name: boozl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

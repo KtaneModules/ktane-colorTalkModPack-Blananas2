@@ -2020,12 +2020,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 114763741548843854}
   Children:
+  - {fileID: 114915734670639284}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114432840839013552}
   - {fileID: 114619177112208908}
   - {fileID: 114642123837161076}
-  - {fileID: 114915734670639284}
   IsPassThrough: 0
-  ChildRowLength: 0
+  ChildRowLength: 3
   Highlight: {fileID: 114842238078460400}
   SelectableColliders: []
   DefaultSelectableIndex: 0

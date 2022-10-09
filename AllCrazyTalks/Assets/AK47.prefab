@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 114178152397143652}
   - component: {fileID: 114149101059672100}
   m_Layer: 0
-  m_Name: default (1)
+  m_Name: BOTTOM LEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 114864103559685862}
   - component: {fileID: 114849079198074656}
   m_Layer: 0
-  m_Name: default
+  m_Name: TOP LEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 114061019144743570}
   - component: {fileID: 114404229981790610}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: SUMBIT WHY WERE THESE NOT LABELLED EARLIER I CANT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 114440069318249954}
   - component: {fileID: 114865251124817756}
   m_Layer: 0
-  m_Name: default (3)
+  m_Name: BOTTOM RIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 114575860526703050}
   - component: {fileID: 114907899241919428}
   m_Layer: 0
-  m_Name: default (2)
+  m_Name: TOP RIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2140,12 +2140,13 @@ MonoBehaviour:
   Parent: {fileID: 114763741548843854}
   Children:
   - {fileID: 114864103559685862}
-  - {fileID: 114178152397143652}
-  - {fileID: 114575860526703050}
-  - {fileID: 114440069318249954}
   - {fileID: 114061019144743570}
+  - {fileID: 114575860526703050}
+  - {fileID: 114178152397143652}
+  - {fileID: 0}
+  - {fileID: 114440069318249954}
   IsPassThrough: 0
-  ChildRowLength: 0
+  ChildRowLength: 3
   Highlight: {fileID: 114842238078460400}
   SelectableColliders: []
   DefaultSelectableIndex: 0
