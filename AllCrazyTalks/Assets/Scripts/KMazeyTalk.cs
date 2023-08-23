@@ -167,7 +167,7 @@ public class KMazeyTalk : MonoBehaviour {
             for (int i = 0; i < 84; i++) {
               if (BigIfSad == WeedKhungus[i]) {
                 Youisdumb = BigIfSad;
-                Display.text = "\"" + KMazeyTalk1.phrases[i] + "\"\n to \n\"" + OneDeeChess + "\"";
+                Display.text = KMazeyTalk1.phrases[i];
                 Debug.LogFormat("[KayMazey Talk #{0}] Resetting... back to \"{1}\"",moduleId,KMazeyTalk1.phrases[i].Replace("\n", ""));
               }
             }
